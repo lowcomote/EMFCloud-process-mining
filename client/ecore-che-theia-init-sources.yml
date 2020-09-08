@@ -30,12 +30,15 @@ sources:
 - source: https://github.com/CamilleLetavernier/sprotty-theia
   extensions:
     - .
+  plugins: []
   checkoutTo: che
 - source: https://github.com/CamilleLetavernier/glsp-theia-integration
   extensions:
     - .
+  plugins: []
   checkoutTo: che
 - source: https://github.com/eclipse-emfcloud/ecore-glsp
   extensions:
     - client/theia-ecore
+  plugins: []
   checkoutTo: che
