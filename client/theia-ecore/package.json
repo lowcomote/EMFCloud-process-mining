@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@eclipse-emfcloud/sprotty-ecore": "next",
-    "@eclipse-glsp/theia-integration": "^0.7.0",
+    "@eclipse-glsp/theia-integration": "next",
     "@theia/core": "^1.4.0"
   },
   "devDependencies": {
