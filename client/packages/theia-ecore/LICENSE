@@ -1,4 +1,9 @@
-Eclipse Public License - v 2.0
+This program and the accompanying materials are made available under the
+terms of the Eclipse Public License v. 2.0 which is available at
+https://www.eclipse.org/legal/epl-2.0, or the GNU General Public License which is
+available at https://www.gnu.org/licenses/gpl-3.0.en.html.
+
+# Eclipse Public License - v 2.0
 
     THE ACCOMPANYING PROGRAM IS PROVIDED UNDER THE TERMS OF THIS ECLIPSE
     PUBLIC LICENSE ("AGREEMENT"). ANY USE, REPRODUCTION OR DISTRIBUTION
@@ -55,7 +60,7 @@ modifications, including but not limited to software source code,
 documentation source, and configuration files.
 
 "Secondary License" means either the GNU General Public License,
-Version 2.0, or any later versions of that license, including any
+Version 3, or any later versions of that license, including any
 exceptions or additional permissions as identified by the initial
 Contributor.
 
@@ -275,3 +280,21 @@ version(s), and exceptions or additional permissions here}."
   look for such a notice.
 
   You may add additional accurate notices of copyright ownership.
+
+---
+## The GNU General Public License
+
+Copyright 2021 EclipseSource & others
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
