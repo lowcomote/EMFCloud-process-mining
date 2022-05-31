@@ -12,6 +12,7 @@ package org.eclipse.emfcloud.ecore.modelserver;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -37,7 +38,9 @@ import org.eclipse.emfcloud.modelserver.emf.common.watchers.ModelWatchersManager
 import org.eclipse.emfcloud.modelserver.emf.configuration.EPackageConfiguration;
 import org.eclipse.emfcloud.modelserver.emf.configuration.ServerConfiguration;
 import org.eclipse.glsp.graph.util.GraphUtil;
+import at.jku.se.eclipse.emf.ecore.listener.Listener;
 
+import com.google.common.collect.Maps;
 import com.google.inject.Inject;
 
 public class EcoreModelResourceManager extends DefaultModelResourceManager {
@@ -49,6 +52,9 @@ public class EcoreModelResourceManager extends DefaultModelResourceManager {
 	public static final int DEFAULT_SHAPE_WIDTH = 175;
 	public static final int DEFAULT_POSITION_X = 10;
 	public static final int DEFAULT_POSITION_Y = 10;
+	
+
+	protected final Map<URI, Listener> listenerMap = Maps.newLinkedHashMap();
 
 	@Inject
 	public EcoreModelResourceManager(Set<EPackageConfiguration> configurations, AdapterFactory adapterFactory,
@@ -68,7 +74,10 @@ public class EcoreModelResourceManager extends DefaultModelResourceManager {
 			} else if (file.isFile()) {
 				URI absolutePath = createURI(file.getAbsolutePath());
 				if (absolutePath.fileExtension().equals(ECORE_EXTENSION)) {
-					resourceSets.put(createURI(file.getAbsolutePath()), new ResourceSetImpl());
+					URI uri = createURI(file.getAbsolutePath());
+					ResourceSetImpl res = new ResourceSetImpl();
+					resourceSets.put(uri, res);
+					listenerMap.put(uri, new Listener(res, uri));
 				}
 				loadResource(file.getAbsolutePath());
 			}
@@ -86,6 +95,11 @@ public class EcoreModelResourceManager extends DefaultModelResourceManager {
 
 	@Override
 	public boolean save(final String modeluri) {
+		Listener old = listenerMap.get(createURI(modeluri));
+		if(old != null) {
+			old.serializeLog();
+//			listenerMap.put(createURI(modeluri), new Listener(old.resourceSet, old.uri));
+		}
 		boolean result = false;
 		for (Resource resource : getResourceSet(modeluri).getResources()) {
 			result = saveResource(resource);
@@ -104,6 +118,7 @@ public class EcoreModelResourceManager extends DefaultModelResourceManager {
 		newEPackage.setNsURI(nsUri);
 		newEPackage.setNsPrefix(nsPrefix);
 		resourceSets.put(ecoreModelUri, resourceSet);
+		listenerMap.put(ecoreModelUri, new Listener(resourceSet, ecoreModelUri));
 
 		try {
 			final Resource ecoreResource = resourceSet.createResource(ecoreModelUri);
@@ -202,6 +217,7 @@ public class EcoreModelResourceManager extends DefaultModelResourceManager {
 		ResourceSet existingResourceSet = getResourceSet(modeluri);
 		editingDomains.remove(existingResourceSet);
 		resourceSets.remove(ecoreModelUri);
+		listenerMap.remove(ecoreModelUri);
 
 		ResourceSet newResourceSet = new ResourceSetImpl();
 
@@ -249,6 +265,7 @@ public class EcoreModelResourceManager extends DefaultModelResourceManager {
 			}
 			editingDomains.remove(existingResourceSet);
 			resourceSets.remove(createURI(modeluri));
+			listenerMap.remove(createURI(modeluri));
 		}
 	}
 

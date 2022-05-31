@@ -22,6 +22,8 @@
 		<module>org.eclipse.emfcloud.ecore.glsp-app</module>
 		<module>org.eclipse.emfcloud.ecore.modelserver</module>
 		<module>org.eclipse.emfcloud.ecore.modelserver-app</module>
+		
+		
 	</modules>
 
 	<build>

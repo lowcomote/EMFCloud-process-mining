@@ -4,7 +4,9 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.emfcloud.ecore.modelserver;singleton:=true
 Automatic-Module-Name: org.eclipse.emfcloud.ecore.modelserver
 Bundle-Version: 0.0.2.qualifier
-Bundle-ClassPath: .
+Bundle-ClassPath: .,
+ lib/jaxb-api-2.2.jar,
+ lib/openxes.jar
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-11
