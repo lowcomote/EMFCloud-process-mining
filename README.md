@@ -1,5 +1,9 @@
-# ecore-glsp
+# MER integration for ecore-glsp
 [![Build Status](https://img.shields.io/jenkins/build?jobUrl=https%3A%2F%2Fci.eclipse.org%2Femfcloud%2Fjob%2Feclipse-emfcloud%2Fjob%2Fecore-glsp%2Fjob%2Fmaster)](https://ci.eclipse.org/emfcloud/job/eclipse-emfcloud/job/ecore-glsp/job/master)
+
+This repo contains the integration of Modeling Event Recording into Ecore-GLSP.
+
+Use the repo as described below, and the event logs will be generated automatically whenever you save an ecore model in the same folder.
 
 For more information, please visit the [EMF.cloud Website](https://www.eclipse.org/emfcloud/). If you have questions, contact us on our [discussions page](https://github.com/eclipse-emfcloud/emfcloud/discussions) and have a look at our [communication and support options](https://www.eclipse.org/emfcloud/contact/).
 
